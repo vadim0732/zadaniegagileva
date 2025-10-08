@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Сайт</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		{% for name in names %}
+		<h1> {{ name }} </h1>
+		{% empty %}
+		<h1> Никого </h1>
+		{% endfor %}
+	</body>
+</html>
