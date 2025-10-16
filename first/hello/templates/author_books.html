@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Книги автора</title>
+</head>
+<body>
+    <h1>Книги автора: {{ author.name }}</h1>
+    
+    {% if books %}
+
+        <ol>
+            
+            {% for book in books %}
+
+            <li>
+                <strong>{{ book.title }}</strong><br>
+                Год издания: {{ book.publication_year }}<br>
+                Цена: {{ book.price|floatformat:2 }}
+            </li>
+
+            {% endfor %}
+        </ol>
+
+    {% else %}
+
+        <p>У этого автора пока нет книг в каталоге.</p>
+        
+    {% endif %}
+
+</body>
+</html>

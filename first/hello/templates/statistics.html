@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Статистика библиотеки</title>
+    <style>
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Статистика библиотеки</h1>
+    
+    <div class="statistics">
+        <h2>Общая статистика</h2>
+        <p><strong>Всего книг:</strong> {{ total_books }}</p>
+        <p><strong>Средняя цена:</strong> 
+
+            {% if avg_price %}
+                {{ avg_price|floatformat:2 }} руб.
+            {% else %}
+                Нет данных
+            {% endif %}
+
+        </p>
+        <p><strong>Годы издания:</strong> 
+            
+            {% if earliest_year and latest_year %}
+                от {{ earliest_year }} до {{ latest_year }}
+            {% else %}
+                Нет данных
+            {% endif %}
+
+        </p>
+    </div>
+    
+    <div class="section">
+        <h2>Авторы с несколькими книгами</h2>
+        
+        {% if authors_with_multiple_books %}
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Имя автора</th>
+                        <th>Количество книг</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for author in authors_with_multiple_books %}
+
+                    <tr>
+                        <td>{{ author.name }}</td>
+                        <td>{{ author.book_count }}</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+        {% else %}
+
+            <p>Таких авторов нет</p>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

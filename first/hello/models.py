@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Author(models.Model):
-    name = models.CharField("Имя", max_length=10)
+    name = models.CharField("Имя", max_length=100)
     birth_year = models.IntegerField("Год рождения", null=True, blank=True)
 
     class Meta:

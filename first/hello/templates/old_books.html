@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Дорогие старые книги</title>
+    <style>
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Дорогие старые книги</h1>
+    
+    {% if books %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Автор</th>
+                    <th>Год</th>
+                    <th>Цена</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for book in books %}
+
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author.name }}</td>
+                    <td>{{ book.publication_year }}</td>
+                    <td>{{ book.price|floatformat:2 }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    {% else %}
+
+        <p class="no-books">Не найдено дорогих старых книг</p>
+
+    {% endif %}
+
+</body>
+</html>

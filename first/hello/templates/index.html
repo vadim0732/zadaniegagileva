@@ -3,8 +3,44 @@
 	<head>
 		<title>Библиотека</title>
 		<meta charset="utf-8">
+		<style>
+			th, td {
+            border: 1px solid;
+        }
+		</style>	
 	</head>
 	<body>
+	    <h1>Книги в наличии</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Год издания</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
 
+            {% for book in books %}
+
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author.name }}</td>
+                <td>{{ book.publication_year }}</td>
+                <td>{{ book.price|floatformat:2 }}</td>
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="4">Нет доступных книг</td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
 	</body>
 </html>
